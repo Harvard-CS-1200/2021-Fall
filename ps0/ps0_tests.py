@@ -90,12 +90,12 @@ def test():
 
         # Basic Tests
         (gen_tree(3), (1,2)),
-        (gen_tree(2), (1,3)),
+        (gen_tree(4), (1,3)),
         (gen_tree(3), (1,3)),
         (gen_tree(3), (1,6)),
         # Tests unbalanced tree
-        (remove_branch(gen_tree(2), 1), (1,1)),
-        (remove_branch(gen_tree(3), 1), (1,1)),
+        (remove_branch(gen_tree(2), 1), (0,1)),
+        (remove_branch(gen_tree(3), 1), (1,2)),
         (remove_branch(gen_tree(8), 1), (48,100)),
         (remove_branch(gen_tree(8), 1), (3,21)),
     ]
