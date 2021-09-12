@@ -16,12 +16,12 @@ def merge(arr1, arr2):
         elif j >= len(arr2):
             sortedArr.append(arr1[i])
             i += 1
-        elif arr1[i][0] >= arr2[j][0]:
-            sortedArr.append(arr2[j])
-            j += 1
-        else:
-            sortedArr.append(arr1[i])
+        elif arr1[i][0] <= arr2[j][0]:
+            sortedArr.append(arr2[i])
             i += 1
+        else:
+            sortedArr.append(arr1[j])
+            j += 1
 
     return sortedArr
 
@@ -36,16 +36,13 @@ def mergeSort(arr):
 
     return merge(half1, half2)
 
-def countSort(arr, univsize, ind=-1):
+def countSort(arr, univsize):
     universe = []
     for i in range(univsize):
         universe.append([])
 
     for elt in arr:
-        if ind != -1:
-            universe[elt[0][ind]].append(elt)
-        else:
-            universe[elt[0]].append(elt)
+        universe[elt[0]].append(elt)
 
     sortedArr = []
     for lst in universe:
