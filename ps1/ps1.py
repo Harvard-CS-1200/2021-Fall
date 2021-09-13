@@ -17,10 +17,10 @@ def merge(arr1, arr2):
             sortedArr.append(arr1[i])
             i += 1
         elif arr1[i][0] <= arr2[j][0]:
-            sortedArr.append(arr2[i])
+            sortedArr.append(arr1[i])
             i += 1
         else:
-            sortedArr.append(arr1[j])
+            sortedArr.append(arr2[j])
             j += 1
 
     return sortedArr
