@@ -304,6 +304,30 @@ def test():
             "show_expectation": True
         },
     ]
+
+    tests["Problem 2 Tests:"] = [
+        {
+            "label": "Basic Rotate 2.1a",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.key",  None),
+            "expected": 12,
+            "show_expectation": False
+        },
+        {
+            "label": "Basic Rotate 2.1b",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.right",  "dontpersist"),
+            "expected": None,
+            "show_expectation": False
+        },
+        {
+            "label": "Basic Rotate 2.1c",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.left.key",  None),
+            "expected": 11,
+            "show_expectation": False
+        },
+    ]
     
     for label, test_results in tests.items():
         print(label)
