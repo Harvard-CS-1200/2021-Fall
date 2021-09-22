@@ -309,26 +309,27 @@ def test():
         {
             "label": "Basic Rotate 2.1a",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.key",  None),
+            "test": lambda T: multi_getattr(T.rotate("L","R"), "right.key",  None),
             "expected": 12,
             "show_expectation": False
         },
         {
             "label": "Basic Rotate 2.1b",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.right",  "dontpersist"),
+            "test": lambda T: multi_getattr(T.rotate("L","R"), "right.right",  "dontpersist"),
             "expected": None,
             "show_expectation": False
         },
         {
             "label": "Basic Rotate 2.1c",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: multi_getattr(T.rotate("R","L"), "right.left.key",  None),
+            "test": lambda T: multi_getattr(T.rotate("L","R"), "right.left.key",  None),
             "expected": 11,
             "show_expectation": False
         },
     ]
-    
+    # Test height properties for delete and rotate
+
     for label, test_results in tests.items():
         print(label)
 

@@ -110,6 +110,7 @@ class BinarySearchTree:
     Returns the root of the tree or None if the tree has no nodes   
     '''
     def delete(self, key):
+        # Your code goes here
         pass
 
     '''
@@ -139,7 +140,8 @@ class BinarySearchTree:
        11 
     '''
     def rotate(self, direction, child_side):
-        pass
+        # Your code goes here
+        return self
 
     def print_bst(self):
         if self.left is not None:
