@@ -3,6 +3,17 @@ from ps3 import BinarySearchTree
 # from ps3_solution import BinarySearchTree
 
 
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
 class Debugger:
     def __init__(self):
         self.counter = 0
@@ -175,14 +186,6 @@ def test():
         #
         #
         #
-        # {
-        #     "label": "Basic Insert 1.2a (Size: 1 | Height: " + str(get_height_of_tree(init_tree(4))) + ")",
-        #     "input": init_tree(4),
-        #     "test": lambda T: T.size,
-        #     "expected": 1,
-        #     "show_expectation": True,
-        #     "count_calculate_sizes": True,
-        # },
         {
             "label": "Basic Insert 1.2b (Size: 2 | Height: " + str(get_height_of_tree(init_tree(4))) + ")",
             "input": init_tree(4),
@@ -216,10 +219,42 @@ def test():
             "count_calculate_sizes": True,
         },
         {
-            "label": "Basic Insert 1.2d (Size: 15 | Height: " + str(get_height_of_tree(init_tree(4).insert(1).insert(2).insert(3).insert(5).insert(6).insert(7).insert(8).insert(9).insert(10).insert(11).insert(12).insert(14))) + ")",
+            "label": "Basic Insert 1.2e (Size: 15 | Height: " + str(get_height_of_tree(init_tree(4).insert(1).insert(2).insert(3).insert(5).insert(6).insert(7).insert(8).insert(9).insert(10).insert(11).insert(12).insert(14))) + ")",
             "input": init_tree(4).insert(1).insert(2).insert(3).insert(5).insert(6).insert(7).insert(8).insert(9).insert(10).insert(11).insert(12).insert(14),
             "test": lambda T: T.insert(15).size,
             "expected": 14,
+            "show_expectation": True,
+            "count_calculate_sizes": True,
+        },
+        {
+            "label": "Basic Insert 1.2f (Size: 2 | Height: " + str(get_height_of_tree(init_tree(4))) + ")",
+            "input": init_tree(4),
+            "test": lambda T: multi_getattr(T.insert(1), "left.size", None),
+            "expected": 1,
+            "show_expectation": True,
+            "count_calculate_sizes": True,
+        },
+        {
+            "label": "Basic Insert 1.2g (Size: 2 | Height: " + str(get_height_of_tree(init_tree(4).insert(1))) + ")",
+            "input": init_tree(4),
+            "test": lambda T: multi_getattr(T.insert(5), "right.size", None),
+            "expected": 1,
+            "show_expectation": True,
+            "count_calculate_sizes": True,
+        },
+        {
+            "label": "Basic Insert 1.2h (Size: 3 | Height: " + str(get_height_of_tree(init_tree(4).insert(1))) + ")",
+            "input": init_tree(4).insert(5),
+            "test": lambda T: multi_getattr(T.insert(6), "right.size", None),
+            "expected": 2,
+            "show_expectation": True,
+            "count_calculate_sizes": True,
+        },
+        {
+            "label": "Basic Insert 1.2i (Size: 3 | Height: " + str(get_height_of_tree(init_tree(4).insert(1))) + ")",
+            "input": init_tree(4).insert(5),
+            "test": lambda T: multi_getattr(T.insert(6), "right.right.size", None),
+            "expected": 1,
             "show_expectation": True,
             "count_calculate_sizes": True,
         },
@@ -307,29 +342,235 @@ def test():
 
     tests["Problem 2 Tests:"] = [
         {
-            "label": "Basic Rotate 2.1a",
+            "label": "Basic Delete 2.1a",
+            "input": init_tree(10),
+            "test": lambda T: T.key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1b",
+            "input": init_tree(10),
+            "test": lambda T: T.delete(10),
+            "expected": None,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1c",
+            "input": init_tree(10),
+            "test": lambda T: T.delete(11).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1d",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: T.delete(11).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1e",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: T.delete(11).left,
+            "expected": None,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1f",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: T.delete(11).right.key,
+            "expected": 12,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1g",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: T.delete(11).size,
+            "expected": 2,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1h",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.delete(11), "right.size", None),
+            "expected": 1,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1i",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: T.delete(11).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1j",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.delete(10), "key", None),
+            "expected": 11,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1k",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.delete(10), "right.key", None),
+            "expected": 12,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1l",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.delete(10), "size", None),
+            "expected": 2,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1m",
+            "input": init_tree(10).insert(11).insert(12),
+            "test": lambda T: multi_getattr(T.delete(10), "right.size", None),
+            "expected": 1,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1n",
+            "input": init_tree(10),
+            "test": lambda T: T.delete(4).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1o",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: T.delete(4).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1p",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: T.delete(4).right,
+            "expected": None,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1q",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: T.delete(4).left.key,
+            "expected": 3,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1r",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: T.delete(4).size,
+            "expected": 2,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1s",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: multi_getattr(T.delete(4), "left.size", None),
+            "expected": 1,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1t",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: T.delete(4).key,
+            "expected": 10,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1u",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: multi_getattr(T.delete(10), "key", None),
+            "expected": 4,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1v",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: multi_getattr(T.delete(10), "left.key", None),
+            "expected": 3,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1w",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: multi_getattr(T.delete(10), "size", None),
+            "expected": 2,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1x",
+            "input": init_tree(10).insert(4).insert(3),
+            "test": lambda T: multi_getattr(T.delete(10), "left.size", None),
+            "expected": 1,
+            "show_expectation": True
+        },
+        {
+            "label": "Basic Delete 2.1v",
+            "input": init_tree(10).insert(4).insert(3).insert(2).insert(1),
+            "test": lambda T: multi_getattr(T.delete(2), "left.left.left.key", None),
+            "expected": 1,
+            "show_expectation": True
+        },
+        {
+            "label": "Check Delete Size 2.1w",
+            "input": init_tree(10).insert(4).insert(3).insert(2).insert(1),
+            "test": lambda T: multi_getattr(T.delete(2), "size", None),
+            "expected": 4,
+            "show_expectation": True
+        },
+        # 
+        {
+            "label": "Basic Rotate 2.2a",
             "input": init_tree(10).insert(11).insert(12),
             "test": lambda T: multi_getattr(T.rotate("L","R"), "right.key",  None),
             "expected": 12,
             "show_expectation": False
         },
         {
-            "label": "Basic Rotate 2.1b",
+            "label": "Basic Rotate 2.2b",
             "input": init_tree(10).insert(11).insert(12),
             "test": lambda T: multi_getattr(T.rotate("L","R"), "right.right",  "dontpersist"),
             "expected": None,
             "show_expectation": False
         },
         {
-            "label": "Basic Rotate 2.1c",
+            "label": "Basic Rotate 2.2c",
             "input": init_tree(10).insert(11).insert(12),
             "test": lambda T: multi_getattr(T.rotate("L","R"), "right.left.key",  None),
             "expected": 11,
             "show_expectation": False
         },
+        {
+            "label": "Basic Rotate 2.2d",
+            "input": init_tree(10).insert(11).insert(20).insert(19).insert(21).insert(5).insert(4).insert(6),
+            "test": lambda T: multi_getattr(T.rotate("L","R"), "left.right.key",  None),
+            "expected": 6,
+            "show_expectation": False
+        },
+        {
+            "label": "Basic Rotate 2.2e",
+            "input": init_tree(5).insert(50).insert(30).insert(25).insert(35).insert(70).insert(65).insert(75),
+            "test": lambda T: multi_getattr(T.rotate("L","R"), "right.left.right.key",  None),
+            "expected": 65,
+            "show_expectation": False
+        },
+        {
+            "label": "Basic Rotate 2.2f",
+            "input": init_tree(200).insert(50).insert(30).insert(25).insert(35).insert(70).insert(65).insert(75),
+            "test": lambda T: multi_getattr(T.rotate("R","L"), "left.right.left.key",  None),
+            "expected": 35,
+            "show_expectation": False
+        },
     ]
     # Test height properties for delete and rotate
 
+    number_passed = 0
+    total_tests = 0
     for label, test_results in tests.items():
         print(label)
 
@@ -339,7 +580,11 @@ def test():
             result["input"].debugger.clear()
             res = result["test"](result["input"])
             con = res == result["expected"]
-            print(result["label"] + ": ", "Passed" if con else "Failed", end="")
+            number_passed += 1 if con else 0
+            total_tests += 1
+            col = color.GREEN if con else color.RED
+            symbol = color.BOLD + col + (u'\u2713' if con else u'\u2717') + color.END + color.END
+            print(symbol + " " + result["label"] + ": ", "Passed" if con else "Failed", end="")
             if (not con and ("show_expectation" not in result or result["show_expectation"])):
                 print(" - Expected " +
                       str(result["expected"]) + " But Got " + str(res), end="")
@@ -351,9 +596,11 @@ def test():
                 #       str(result["input"].debugger.count()))
                 print("\t Number of sets/changes to to tree node sizes: " +
                       str(result["input"].debugger.size_counter()))
-            print()
+            # print()
 
         print()
+    col = color.GREEN if number_passed == total_tests else color.RED
+    print(color.BOLD + "Tests Passed {}{}/{}".format(col, number_passed, total_tests) + color.END)
 
 
 if __name__ == "__main__":

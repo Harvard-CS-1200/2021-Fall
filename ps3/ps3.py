@@ -149,4 +149,5 @@ class BinarySearchTree:
         print( self.key),
         if self.right is not None:
             self.right.print_bst()
+        return self
 
