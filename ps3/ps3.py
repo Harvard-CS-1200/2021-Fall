@@ -130,7 +130,7 @@ class BinarySearchTree:
           \
            12
     
-    Execute: NodeFor10.rotate("R", "L") -> Outputs: NodeFor10
+    Execute: NodeFor10.rotate("L", "R") -> Outputs: NodeFor10
 
     Output Graph
       10
