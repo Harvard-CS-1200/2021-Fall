@@ -358,35 +358,35 @@ def test():
         {
             "label": "Basic Delete 2.1c",
             "input": init_tree(10),
-            "test": lambda T: T.delete(11).key,
+            "test": lambda T: multi_getattr(T.delete(11), "key"),
             "expected": 10,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1d",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: T.delete(11).key,
+            "test": lambda T: multi_getattr(T.delete(11), "key"),
             "expected": 10,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1e",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: T.delete(11).left,
+            "test": lambda T: multi_getattr(T.delete(11), "left", "donotexceptdefault"),
             "expected": None,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1f",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: T.delete(11).right.key,
+            "test": lambda T: multi_getattr(T.delete(11), "right.key"),
             "expected": 12,
             "show_expectation": True
         },
         {
             "label": "Check Delete Size 2.1g",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: T.delete(11).size,
+            "test": lambda T: multi_getattr(T.delete(11), "size"),
             "expected": 2,
             "show_expectation": True
         },
@@ -400,7 +400,7 @@ def test():
         {
             "label": "Basic Delete 2.1i",
             "input": init_tree(10).insert(11).insert(12),
-            "test": lambda T: T.delete(11).key,
+            "test": lambda T: multi_getattr(T.delete(11), "key"),
             "expected": 10,
             "show_expectation": True
         },
@@ -435,35 +435,35 @@ def test():
         {
             "label": "Basic Delete 2.1n",
             "input": init_tree(10),
-            "test": lambda T: T.delete(4).key,
+            "test": lambda T: multi_getattr(T.delete(4), "key"),
             "expected": 10,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1o",
             "input": init_tree(10).insert(4).insert(3),
-            "test": lambda T: T.delete(4).key,
+            "test": lambda T: multi_getattr(T.delete(4), "key"),
             "expected": 10,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1p",
             "input": init_tree(10).insert(4).insert(3),
-            "test": lambda T: T.delete(4).right,
+            "test": lambda T: multi_getattr(T.delete(4), "right", "donotexceptdefault"),
             "expected": None,
             "show_expectation": True
         },
         {
             "label": "Basic Delete 2.1q",
             "input": init_tree(10).insert(4).insert(3),
-            "test": lambda T: T.delete(4).left.key,
+            "test": lambda T: multi_getattr(T.delete(4), "left.key"),
             "expected": 3,
             "show_expectation": True
         },
         {
             "label": "Check Delete Size 2.1r",
             "input": init_tree(10).insert(4).insert(3),
-            "test": lambda T: T.delete(4).size,
+            "test": lambda T: multi_getattr(T.delete(4), "size"),
             "expected": 2,
             "show_expectation": True
         },
@@ -477,7 +477,7 @@ def test():
         {
             "label": "Basic Delete 2.1t",
             "input": init_tree(10).insert(4).insert(3),
-            "test": lambda T: T.delete(4).key,
+            "test": lambda T: multi_getattr(T.delete(4), "key"),
             "expected": 10,
             "show_expectation": True
         },
