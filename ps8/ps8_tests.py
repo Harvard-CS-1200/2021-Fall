@@ -114,7 +114,8 @@ testcases = {
         lambda: Graph(2).add_edge(0, 1), # line length 2
         lambda: Graph(2).add_edge(1, 0), # line length 2
         lambda: Graph(4).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3), # line length 4
-        lambda: Graph(4).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 0), # sqaure
+        lambda: Graph(4).add_edge(0, 1).add_edge(2, 3), # pair of lines
+        lambda: Graph(4).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 0), # square
         lambda: Graph(8).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 0).add_edge(0, 4).add_edge(1, 5).add_edge(2, 6).add_edge(3,7), # sqaure with line out of each node
         lambda: Graph(8).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 4).add_edge(4, 5).add_edge(5, 6).add_edge(7, 0).clone_and_merge(Graph(8).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 4).add_edge(4, 5).add_edge(5, 6).add_edge(7, 0), None, None), # sqaure with line out of each node
         lambda: Graph(8).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 4).add_edge(4, 5).add_edge(5, 6).add_edge(7, 0).clone_and_merge(Graph(8).add_edge(0, 1).add_edge(1, 2).add_edge(2, 3).add_edge(3, 4).add_edge(4, 5).add_edge(5, 6).add_edge(7, 0), 0, 0), # sqaure with line out of each node
