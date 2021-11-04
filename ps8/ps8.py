@@ -111,11 +111,15 @@ def exhaustive_search_coloring(G, k=3):
 '''
     Part A: Implement two coloring via breadth-first search.
 
+    Hint: You will need to adapt the given BFS pseudocode so that it works on all graphs,
+    regardless of whether they are connected.
+
     When you're finished, check your work by running python3 -m ps8_color_tests 2.
 '''
 
 # Given an instance of the Graph class G and a subset of precolored nodes,
 # Assigns precolored nodes to have color 2, and attempts to color the rest using colors 0 and 1.
+#
 # Precondition: Assumes that the precolored_nodes form an independent set.
 # If successful, modifies G.colors and returns the coloring.
 # If no coloring is possible, resets all of G's colors to None and returns None.

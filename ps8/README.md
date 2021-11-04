@@ -13,7 +13,7 @@ We have implemented exhaustive search for you as a benchmark. You will implement
 
 ## Instructions
 
-**Problem 1a**: First, implement the O(n+m)-time algorithm for 2-coloring that we covered in class, verifying its correctness by running `python3 -m ps8_tests 2`.
+**Problem 1a**: First, implement the O(n+m)-time algorithm for 2-coloring that we covered in class, verifying its correctness by running `python3 -m ps8_tests 2`. You will need to adapt the given BFS pseudocode so that it works on all graphs, regardless of whether they are connected.
 
 **Problem 1b**: Implement the O(1.89^n)-time algorithm for 3-coloring that you studied in Active Learning Exercise 5, also verifying its correctness by running `python3 -m ps8_tests 3`.
 
