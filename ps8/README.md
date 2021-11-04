@@ -19,7 +19,7 @@ We have implemented exhaustive search for you as a benchmark. You will implement
 
 **Problem 1c**: Finally, implement the reduction from 3-coloring to SAT given in class,  producing an input that can be fed into the SAT Solver Glucose, and verify its correctness by running `python3 -m ps8_tests 3`.
 
-**Problem 1d**: Run the algorithm on we have provided most of the code for plotting using `ps8_experiments.py`.
+**Problem 1d**: Compare the performance of the three 3-coloring algorithms on different types of graphs. We have provided most of experiment code in `ps8_experiments.py`; all you have to do is try different parameters and analyze the results.
 
 **Conclusion**: If your work passes the local tests, includes the figure for your generated chart, and answers 1b, you should be in good shape to get full marks for this problem.
 You can check that you pass all tests by running `python3 -m ps8_tests`.
